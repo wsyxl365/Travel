@@ -4,7 +4,7 @@
         <ul>
             <li
                 class="item border-bottom"
-                v-for="item of recommendList"
+                v-for="item of list"
                 :key="item.id"
             >
                 <img class="item-img" :src="item.imgUrl" alt="" />
@@ -22,29 +22,8 @@
 <script>
     export default {
         name: "HomeRecommend",
-        data() {
-            return {
-                recommendList: [
-                    {
-                        id: "0001",
-                        imgUrl: "http://img1.qunarzz.com/sight/p0/1411/1b/1c2cabdec40acaa25dc6b038c43d7376.water.jpg_200x200_f655c833.jpg",
-                        title: "金孔雀温泉",
-                        desc: "泡澡就去金孔雀温泉"
-                    },
-                    {
-                        id: "0002",
-                        imgUrl: "http://img1.qunarzz.com/sight/p0/1411/1b/1c2cabdec40acaa25dc6b038c43d7376.water.jpg_200x200_f655c833.jpg",
-                        title: "金孔雀温泉",
-                        desc: "泡澡就去金孔雀温泉"
-                    },
-                    {
-                        id: "0003",
-                        imgUrl: "http://img1.qunarzz.com/sight/p0/1411/1b/1c2cabdec40acaa25dc6b038c43d7376.water.jpg_200x200_f655c833.jpg",
-                        title: "金孔雀温泉",
-                        desc: "泡澡就去金孔雀温泉"
-                    }
-                ]
-            }
+        props: {
+          list: Array
         }
     }
 </script>
