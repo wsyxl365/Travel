@@ -2,12 +2,13 @@
     <div>
         <city-header></city-header>
         <city-search></city-search>
-        <city-list></city-list>
-        <city-alphabet></city-alphabet>
+        <city-list :cities="cities" :hot="hotCities"></city-list>
+        <city-alphabet :cities="cities"></city-alphabet>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
     import CityHeader from "./components/Header";
     import CitySearch from "./components/Search";
     import CityList from "./components/List";
@@ -19,6 +20,34 @@
             CitySearch,
             CityList,
             CityAlphabet
+        },
+        data() {
+            return {
+                cities: {},
+                hotCities: []
+            }
+        },
+        methods: {
+            getCityInfo() {
+                axios.get('/api/city.json')
+                    .then(this.handleGetCityInfoSucc)
+                    .catch(err=>{
+                        console.log(`接口错误!${err}`);
+                    })
+            },
+            handleGetCityInfoSucc(res) {
+                console.log(res)
+                try {
+                    const { data:{ data } } = res;
+                    this.cities = data.cities;
+                    this.hotCities = data.hotCities;
+                } catch (e) {
+                    console.log("数据异常！");
+                }
+            }
+        },
+        mounted() {
+            this.getCityInfo();
         }
     }
 </script>
