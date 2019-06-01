@@ -1,0 +1,22 @@
+apps:
+    - srcipt: ./src/main.js
+      name: Travel
+      env:
+          COMMON_VARIABLE: true
+      env_production:
+          NODE_ENV: production
+deploy:
+    production:
+        user: rn_yxl
+        host:
+            - 111.231.84.28
+        port:
+            22
+        ref: origin/master      # 要拉取的git分支
+        ssh_options: StrictHostKeyChecking=no # SSH 公钥检查
+        repo: git@github.com:wsyxl365/Travel.git # 远程仓库地址
+        path: /home/www/Travel/production              # 拉取到服务器某个目录下
+        pre-deploy: git fetch --all # 部署前执行
+        post-deploy: npm install && pm2 startOrRestart ecosystem.yaml --env production # 部署后执行
+        env:
+            NODE_ENV: production
