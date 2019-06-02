@@ -1,0 +1,27 @@
+{
+    "apps" : [{
+        "name"      : "Travel",
+        "script"    : "app.js",
+        "env": {
+            "COMMON_VARIABLE": "true"
+        },
+        "env_production" : {
+            "NODE_ENV": "production"
+        }
+    }],
+    "deploy" : {
+        "production" : {
+            "user" : "yxl",
+            "host" : ["111.231.84.28"],
+            "ref"  : "origin/master",
+            "repo" : "git@github.com:wsyxl365/Travel.git",
+            "path" : "/home/www/Travel/production",
+            "ssh_options": "StrictHostKeyChecking=no",
+            "pre-deploy" : "git fetch --all",
+            "post-deploy" : "npm install --dev && npm run build && pm2 startOrRestart ecosystem.json --env production",
+            "env"  : {
+                "NODE_ENV": "production"
+            }
+        }
+    }
+}
