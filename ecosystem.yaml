@@ -7,11 +7,9 @@ apps:
           NODE_ENV: production
 deploy:
     production:
-        user: rn_yxl
-        host:
-            - 111.231.84.28
-        port:
-            22
+        user: yxl
+        host: 111.231.84.28
+        port: 22
         ref: origin/master      # 要拉取的git分支
         ssh_options: StrictHostKeyChecking=no # SSH 公钥检查
         repo: git@github.com:wsyxl365/Travel.git # 远程仓库地址
