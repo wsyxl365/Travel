@@ -1,5 +1,5 @@
 apps:
-    - srcipt: ./src/main.js
+    - srcipt: app.js
       name: Travel
       env:
           COMMON_VARIABLE: true
