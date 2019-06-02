@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="recommend-title">周末去哪儿</div>
+        <div class="recommend-title">周末去哪儿-你说了算</div>
         <ul>
             <li
                 class="item border-bottom"
