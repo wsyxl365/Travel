@@ -15,6 +15,6 @@ deploy:
         repo: git@github.com:wsyxl365/Travel.git # 远程仓库地址
         path: /home/www/Travel/production              # 拉取到服务器某个目录下
         pre-deploy: git fetch --all # 部署前执行
-        post-deploy: npm install && pm2 startOrRestart ecosystem.yaml --env production # 部署后执行
+        post-deploy: npm install --dev && npm run build && pm2 startOrRestart ecosystem.yaml --env production # 部署后执行
         env:
             NODE_ENV: production
